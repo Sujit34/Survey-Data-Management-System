@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import data
+from .models import data,Photo
 from django.contrib.auth.models import User
 
 
@@ -16,3 +16,9 @@ class BaseForm(ModelForm):
 
 
 
+class PhotoForm(forms.ModelForm):
+    
+    shelterid = forms.CharField(max_length=200)
+    class Meta:
+        model = Photo        
+        fields = ('shelterid','file', )

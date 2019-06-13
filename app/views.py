@@ -13,6 +13,11 @@ from django.db.models import Avg
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 
+from django.views import View
+
+from .forms import PhotoForm
+from .models import Photo
+
 def edit_data(request, data_id):
     dt = data.objects.get(id=data_id)
     if request.POST:
@@ -279,7 +284,7 @@ def show_data(request):
     
     elif query_dis:
         queryset_list = queryset_list.filter(
-            Q(district__icontains=query_dis)
+            Q(district__exact=query_dis)
         ) 
     
      
@@ -334,3 +339,22 @@ def show_data(request):
     return render(request, template, context)
 
 
+def gallery_display(self, request):
+    photos_list = Photo.objects.all()
+    return render(self.request, 'gallery/index.html', {'li_photo': photos_list})
+
+def upload(request, data_id):
+    form = PhotoForm(request.POST, request.FILES)
+    
+    if form.is_valid():        
+        photo = form.save()
+    else:
+        form = PhotoForm()
+    return render(request, 'gallery/index.html', {'form': form}) 
+
+     
+
+
+
+
+    

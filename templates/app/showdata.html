@@ -8,6 +8,9 @@
 
 {% block title %} All Servey Data {% endblock %}
 
+
+
+
 {% block body %}
                 <section>
                     <div class="section-body">
@@ -150,6 +153,8 @@
                                                             <th data-sortable="true">Shanty</th>
                                                             <th data-sortable="true">Total</th>
                                                             <th data-sortable="true" width=20px>Action</th>     
+                                                            <th data-sortable="true" width=30px>Gallery</th>
+                                                          
                                                             
                                                                                                     
                                                         </tr>
@@ -180,7 +185,10 @@
                                                             <td>{{sdata.shanty|floatformat:"0"}}</td>
                                                             <td>{{sdata.total_house|floatformat:"0"}}</td>
                                                             <td>                                                                    
-                                                                    <a href="{% url 'editdata' sdata.id %}" class="btn ink-reaction btn-floating-action btn-warning"><i class="md md-edit"></i> </a>                 
+                                                                <a href="{% url 'editdata' sdata.id %}" class="btn ink-reaction btn-floating-action btn-warning"><i class="md md-edit"></i> </a>                 
+                                                            </td>                                                          
+                                                            <td>                                                                    
+                                                                <a href="{% url 'upload' sdata.id %}">Gallery</a>                 
                                                             </td>
                                                             
                                                         </tr>

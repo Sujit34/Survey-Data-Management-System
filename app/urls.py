@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from app import views
 
+
+
 urlpatterns = [
     
     path('editdata/<int:data_id>/', views.edit_data, name='editdata'),
     path('showdata', views.show_data, name='showdata'),
+    path('upload/<int:data_id>/', views.upload, name='upload'),   
     
      
 ]
